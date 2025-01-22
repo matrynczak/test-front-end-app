@@ -31,6 +31,8 @@ form {
 input {
     border: 1px grey solid;
     width: 75%;
+    height: 20px;
+    font-size: 17px;
 }
 
 .input-wrapper {
@@ -39,6 +41,7 @@ input {
     display: flex;
     align-items: center;
     margin: 3px 0;
+    height: 25px;
 }
 
 label {
@@ -62,6 +65,7 @@ h3 {
     font-weight: bolder;
     text-decoration: underline;
     margin-left: 10px;
+    margin-bottom: 5px;
 }
 
 .submit-wrapper {

@@ -1,26 +1,30 @@
-import React from 'react';
-import './CompetitionForm.css';
+import React from "react";
+import "./CompetitionForm.css";
 
-const CompetitionForm = ({compFormData, handleAddCompForm, handleRemoveComp, comp, index}) => {
-    
-    const handleCompChange = (e, index) => {
-        const {name, value} = e.target;
-        const updatedComp = [...compFormData.competitions];
-        
-        updatedComp[index] = {
-            ...updatedComp[index],
-            [name]: value
-        };
+const CompetitionForm = ({
+  compFormData,
+  handleAddCompForm,
+  handleRemoveComp,
+  comp,
+  index,
+}) => {
+  const handleCompChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedComp = [...compFormData.competitions];
 
-        handleAddCompForm(updatedComp);
-    }
+    updatedComp[index] = {
+      ...updatedComp[index],
+      [name]: value,
+    };
 
-    return (
-        <div className='comp-form-single'>
-            
-            <div className='comp-inputs'>
-            <div className='input-wrapper'>
-          <label htmlFor="name">Comp Name</label>
+    handleAddCompForm(updatedComp);
+  };
+
+  return (
+    <div className="comp-form-single">
+      <div className="comp-inputs">
+        <div className="input-wrapper">
+          <label htmlFor="name">Name</label>
           <input
             type="text"
             id="comp-name"
@@ -30,8 +34,8 @@ const CompetitionForm = ({compFormData, handleAddCompForm, handleRemoveComp, com
           />
         </div>
 
-        <div className='input-wrapper'>
-          <label htmlFor="id">Comp Id</label>
+        <div className="input-wrapper">
+          <label htmlFor="id">Id</label>
           <input
             type="text"
             id="comp-id"
@@ -40,12 +44,17 @@ const CompetitionForm = ({compFormData, handleAddCompForm, handleRemoveComp, com
             onChange={(e) => handleCompChange(e, index)}
           />
         </div>
-            </div>
-       
-        <button className='remove-comp-button' type='button' onClick={() => handleRemoveComp(index)}>-</button>
-        </div>
-    )
-  
-}
+      </div>
+
+      <button
+        className="remove-comp-button"
+        type="button"
+        onClick={() => handleRemoveComp(index)}
+      >
+        -
+      </button>
+    </div>
+  );
+};
 
 export default CompetitionForm;

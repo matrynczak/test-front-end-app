@@ -2,9 +2,8 @@ header {
     height: 20px;
     background-color: #00143c;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    padding: 30px 20px 30px 20px;
+    padding: 20px 20px;
 }
 
 .login-button {
@@ -25,4 +24,12 @@ header {
     color: #00143c;
     width: 100px;
     height: 30px;
+}
+
+.header-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1500px;
+    display: flex;
+    justify-content: flex-end;
 }
