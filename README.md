@@ -25,7 +25,7 @@ You may also see any lint errors in the console.
 To open working app please use browser in non-security mode. Regular browser block requests to localhost instances (API used in project).
 To open such instance of Chrome use following command:
 
-### `open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args     --user-data-dir="/tmp/chrome_dev_test" --disable-web-security`
+### `open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security`
 
 ==============================================================================================================
 
