@@ -6,7 +6,7 @@ const Header = ({ isLoggedIn, handleLogin, handleLogout }) => {
       <div className="header-content">
         {!isLoggedIn ? (
           <button className="login-button" onClick={handleLogin}>
-            Login
+            Auto-login
           </button>
         ) : (
           <button className="logout-button" onClick={handleLogout}>

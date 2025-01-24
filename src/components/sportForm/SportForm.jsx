@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./SportForm.css";
 import CompetitionForm from "../competitionForm/CompetitionForm";
+//import { fs } from 'fs';
+import mock from '../../sports.json';
 
 const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
   const [name, setName] = useState("");
@@ -21,21 +23,25 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
   }, [name, id, isActive, compFormData]);
 
   const saveSportInApi = async () => {
-    try {
-      fetch(`http://localhost:8080/sports/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(sportToSave),
-      })
-        .then((res) => res.json())
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (e) {
-      console.error("Error adding sport: ", e);
-    }
+    //try {
+    //  fetch(`http://localhost:8080/sports/${id}`, {
+    //    method: "POST",
+    //    headers: {
+    //      "Content-Type": "application/json",
+    //    },
+    //    body: JSON.stringify(sportToSave),
+    //  })
+    //    .then((res) => res.json())
+    //    .catch((error) => {
+    //      console.log(error);
+    //    });
+    //} catch (e) {
+    //  console.error("Error adding sport: ", e);
+    //}
+    
+    const sports = JSON.parse(localStorage.getItem('sports'));
+    sports.push(sportToSave);
+    localStorage.setItem('sports', JSON.stringify(sports));
   };
 
   const handleUpdateSportList = () => {
