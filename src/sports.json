@@ -1,0 +1,51 @@
+[
+    {
+      "id": "1",
+      "name": "Football",
+      "active": true,
+      "competitions": [
+        {
+          "id": "C_1",
+          "name": "English Premier League"
+        },
+        {
+          "id": "C_2",
+          "name": "Spanish La Liga"
+        },
+        {
+          "id": "C_3",
+          "name": "Polish Ekstraklasa"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "UFC",
+      "active": true,
+      "competitions": [
+        {
+          "id": "C_4",
+          "name": "UFC 257"
+        },
+        {
+          "id": "C_5",
+          "name": "UFC Fight Night"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Basketball",
+      "active": true,
+      "competitions": [
+        {
+          "id": "C_6",
+          "name": "NBA"
+        },
+        {
+          "id": "C_7",
+          "name": "EuroLeague"
+        }
+      ]
+    }
+  ]

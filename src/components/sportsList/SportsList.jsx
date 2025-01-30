@@ -7,17 +7,21 @@ const SportsList = ({
   isFetching,
 }) => {
   const removeSportInApi = async (id) => {
-    try {
-      fetch(`http://localhost:8080/sports/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (e) {
-      console.error("Error removing sport: ", e);
-    }
+    //try {
+    //  fetch(`http://localhost:8080/sports/${id}`, {
+    //    method: "DELETE",
+    //  })
+    //    .then((res) => res.json())
+    //    .catch((error) => {
+    //      console.log(error);
+    //    });
+    //} catch (e) {
+    //  console.error("Error removing sport: ", e);
+    //}
+    
+    let sports = JSON.parse(localStorage.getItem('sports'));
+    sports = sports.filter((sport) => sport.id !== id);
+    localStorage.setItem('sports', JSON.stringify(sports));
   };
 
   const handleRemoveSport = (id) => {

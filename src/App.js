@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import SportForm from "./components/sportForm/SportForm";
 import SportsList from "./components/sportsList/SportsList";
 import { getCookieValueByName } from "./utils/getCookie";
+import sports from './sports.json';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -11,21 +12,25 @@ function App() {
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
-    const getData = async () => {
-      const url = "http://localhost:8080/sports";
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
-        setSportsList(json);
-        setIsFetching(false);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-    getData();
+    //const getData = async () => {
+    //  const url = "http://localhost:8080/sports";
+    //  try {
+    //    const response = await fetch(url);
+    //    if (!response.ok) {
+    //      throw new Error(`Response status: ${response.status}`);
+    //    }
+    //    const json = await response.json();
+    //    setSportsList(json);
+    //    setIsFetching(false);
+    //  } catch (error) {
+    //    console.error(error.message);
+    //  }
+    //};
+    //getData();
+
+    localStorage.setItem('sports', JSON.stringify(sports));
+    setSportsList(sports);
+    setIsFetching(false);
   }, []);
 
   const handleLogin = () => {
