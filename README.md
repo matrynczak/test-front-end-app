@@ -3,14 +3,22 @@
 Project has been built for the purposes of interview of candidates for QA roles in Sportsbook channel.
 
 # Prerequisites 
-To run the app you need to have run API from sports-api-demo project. 
-API is running on port 8080.
+Project needs to be run on Node v20. 
+You can use NVM to switch to proper version. 
 
-API repository: https://gitlab.com/williamhillplc/sports/testing/sandbox/sports-api-demo
+  MacOS/Linux:
+### `nvm use`
 
-## Available Scripts
+  Windows:
+### `nvm use 20`
 
-In the project directory, you can run:
+## Installing and running application
+
+To install all dependencies:
+
+### `npm install`
+
+After installation you can run app using:
 
 ### `npm start`
 
@@ -20,15 +28,30 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### Open app
+## Running with Docker
 
-To open working app please use browser in non-security mode. Regular browser block requests to localhost instances (API used in project).
-To open such instance of Chrome use following command:
+You can run the app using docker-compose. 
+To do this, from the root app folder run: 
 
-### `open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security`
+### `docker-compose up`
 
-==============================================================================================================
+This will run app on [http://localhost:3000](http://localhost:3000) like via manual installation and starting the application.
+
+
+===============================================================
 
 # EXERCISES FOR CANDIDATES
 
-TBD
+Note: Page reload is restoring sports list to starting state. 
+
+1. Login using "Auto-login" button and assert user is logged in.
+
+2. Remove second sport from list and assert item has been removed. 
+
+3. Assert 'Football' has 3 competitions and second competition attributes are: 
+ - name : 'Spanish La Liga'
+ - id: 'C_2'
+
+4. Add sport without any competition and assert item has been added to list with correct content on proper position (new sport is added as last)
+
+5. Add sport with 2 competitions and assert item has been added to list with correct content on proper position (new sport is added as last)

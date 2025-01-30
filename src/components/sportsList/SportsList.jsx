@@ -59,7 +59,7 @@ const SportsList = ({
               <span className="sport-item-name">{sport.name}</span>
               <button
                 type="button"
-                className={`delete-sport-button ${!isLoggedIn ? `not-allowed` : null}`}
+                className={`delete-sport-button${!isLoggedIn ? ` not-allowed` : ''}`}
                 onClick={() => handleRemoveSport(sport.id)}
               >
                 X
