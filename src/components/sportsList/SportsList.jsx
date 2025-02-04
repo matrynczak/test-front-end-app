@@ -35,7 +35,7 @@ const SportsList = ({
     return (
       <ul className="competitions-list">
         {sport.competitions.map((comp) => (
-          <div className="single-competition-list-item">
+          <div key={comp.id} className="single-competition-list-item">
             <span className="single-competition-list-label">
               Name
               <span>{comp.name}</span>
@@ -54,7 +54,7 @@ const SportsList = ({
     return (
       <ul className="sports-list">
         {sportsList.map((sport) => (
-          <div className="single-sport-list-item">
+          <div key={sport.id} className="single-sport-list-item">
             <div className="sport-item-header">
               <span className="sport-item-name">{sport.name}</span>
               <button

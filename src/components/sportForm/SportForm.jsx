@@ -10,6 +10,7 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
   const [isActive, setIsActive] = useState(false);
   const [sportToSave, setSportToSave] = useState({});
   const [compFormData, setCompFormData] = useState({ competitions: [] });
+  const [error, setError] = useState("");
 
   let sportObject = {
     name: name,
@@ -18,9 +19,13 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
     competitions: compFormData.competitions,
   };
 
+  const sports = JSON.parse(localStorage.getItem('sports'));
+
   useEffect(() => {
     setSportToSave(sportObject);
   }, [name, id, isActive, compFormData]);
+
+  const isSportWithIdOnList = (listOfSports, sportId) => !!listOfSports.find(sport => sport.id === sportId);
 
   const saveSportInApi = async () => {
     //try {
@@ -38,8 +43,7 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
     //} catch (e) {
     //  console.error("Error adding sport: ", e);
     //}
-    
-    const sports = JSON.parse(localStorage.getItem('sports'));
+
     sports.push(sportToSave);
     localStorage.setItem('sports', JSON.stringify(sports));
   };
@@ -49,8 +53,6 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
 
     handleSportListUpdate(updatedSportsList);
   };
-
-  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,8 +70,13 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
       isActive: isActive,
       competitions: compFormData.competitions,
     });
-    saveSportInApi();
-    handleUpdateSportList();
+    if(isSportWithIdOnList(sports, id)) {
+        setError(`Sport with id = ${id} is already in the list!`)
+    } 
+    else {
+        saveSportInApi();
+        handleUpdateSportList();
+    }
 
     setName("");
     setId("");
@@ -104,6 +111,7 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
     return compFormData.competitions.map((comp, index) => (
       <div className="competitions-form-wrapper">
         <CompetitionForm
+          key={index}
           compFormData={compFormData}
           handleAddCompForm={handleAddCompForm}
           handleRemoveComp={handleRemoveComp}
@@ -137,8 +145,9 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
           <div className="input-wrapper">
             <label htmlFor="id">Id</label>
             <input
-              type="text"
+              type="number"
               id="id"
+              min='1'
               value={id}
               onChange={(e) => setId(e.target.value)}
             />
@@ -146,12 +155,15 @@ const SportForm = ({ sportsList, handleSportListUpdate, isLoggedIn }) => {
 
           <div className="input-wrapper">
             <label htmlFor="isActive">Active?</label>
+            <div className="is-active-input-wrapper">
             <input
               type="checkbox"
               id="isActive"
               value={isActive}
               onChange={() => setIsActive(!isActive)}
             />
+            </div>
+            
           </div>
 
           <h3>Competitions</h3>

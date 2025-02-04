@@ -55,3 +55,5 @@ Note: Page reload is restoring sports list to starting state.
 4. Add sport without any competition and assert item has been added to list with correct content on proper position (new sport is added as last)
 
 5. Add sport with 2 competitions and assert item has been added to list with correct content on proper position (new sport is added as last)
+
+6. Try to add sport with id=1 and assert form doesn't allow to add sport with id of already existing sport.
