@@ -4,13 +4,13 @@ const Header = ({ isLoggedIn, handleLogin, handleLogout }) => {
   return (
     <header>
       <div className="header-content">
-        {!isLoggedIn ? (
-          <button className="login-button" onClick={handleLogin}>
-            Auto-login
+        {isLoggedIn ? (
+            <button className="logout-button" onClick={handleLogout}>
+            Logout
           </button>
         ) : (
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
+            <button className="login-button" onClick={handleLogin}>
+            Auto-login
           </button>
         )}
       </div>

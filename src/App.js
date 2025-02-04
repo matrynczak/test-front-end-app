@@ -28,9 +28,16 @@ function App() {
     //};
     //getData();
 
-    localStorage.setItem('sports', JSON.stringify(sports));
-    setSportsList(sports);
-    setIsFetching(false);
+    const localStorageSports = JSON.parse(localStorage.getItem('sports'));   
+    if(localStorageSports === null) {
+        localStorage.setItem('sports', JSON.stringify(sports));
+        setSportsList(sports);
+        setIsFetching(false);
+    } 
+    else {
+        setSportsList(localStorageSports);
+        setIsFetching(false);
+    }
   }, []);
 
   const handleLogin = () => {
